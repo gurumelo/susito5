@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>susito5</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<style type="text/css">
+		#videocontenedor {
+			position:absolute;
+			top: 0;
+			left: 0;
+			height:100%;
+			width:100%;
+			overflow: hidden;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<ul>
+		<% for(var i=0; i<archivos.length; i++) {%>
+			<li><a href="#" class="ar" data-ar="archivos/<%= archivos[i] %>"><%= archivos[i] %></a></li>
+		<% } %>
+	</ul>
+
+	<div id="videocontenedor">
+	</div>
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script>
+	$(function() {
+		$('.ar').on('click', function(e) {
+			e.preventDefault();
+			var fuente = $(this).data('ar');
+			$('#videocontenedor').html('<video width="100%" height="100%" controls><source src="'+ fuente +'"></video>');
+			$('#videocontenedor').fadeIn();
+		});
+	});
+	</script>
+
+</body>
+</html>

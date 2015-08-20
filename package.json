@@ -1,0 +1,12 @@
+{
+  "name": "susito5",
+  "version": "0.0.1",
+  "description": "visor",
+  "main": "index.js",
+  "author": "nadie",
+  "license": "GPL",
+  "dependencies": {
+    "ejs": "^2.3.3",
+    "express": "^4.13.3"
+  }
+}
