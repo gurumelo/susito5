@@ -14,6 +14,15 @@
 			overflow: hidden;
 			display: none;
 		}
+		#cerrar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 40px;
+			display: none;
+			z-index: 99;
+		}
 	</style>
 </head>
 <body>
@@ -23,6 +32,9 @@
 			<li><a href="#" class="ar" data-ar="archivos/<%= archivos[i] %>"><%= archivos[i] %></a></li>
 		<% } %>
 	</ul>
+	
+	<div id="cerrar">
+	</div>	
 
 	<div id="videocontenedor">
 	</div>
@@ -33,8 +45,19 @@
 		$('.ar').on('click', function(e) {
 			e.preventDefault();
 			var fuente = $(this).data('ar');
-			$('#videocontenedor').html('<video width="100%" height="100%" controls><source src="'+ fuente +'"></video>');
+			$('#cerrar').show();
+			$('#videocontenedor').html('<video id="elvideo" width="100%" height="100%" controls><source src="'+ fuente +'"></video>');
 			$('#videocontenedor').fadeIn();
+		});
+		$('#cerrar').on('click', function(e) {
+			e.preventDefault();
+			var elvideo = $('#elvideo')[0];
+			elvideo.pause();
+			elvideo.src = '';
+			elvideo.load();
+			$('#elvideo').remove();
+			$('#videocontenedor').hide();
+			$(this).hide();
 		});
 	});
 	</script>
